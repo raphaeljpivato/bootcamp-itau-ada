@@ -20,10 +20,11 @@ jobs:
     steps:
     - name: Install and Test
       run: 
-        apt-get update && apt-get -y install npm
-        npm install -g @angular/cli
-        ng test
+        sudo git pull
+        sudo apt-get update && apt-get -y install npm
+        sudo npm install -g @angular/cli
+        sudo ng test
 
     - name: Build image
       run: 
-        docker build -t frontend-app:1.0 .
+        sudo docker build -t frontend-app:1.0 .
