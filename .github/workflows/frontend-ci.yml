@@ -24,10 +24,16 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: '14'
+      
+    - name: Getting dependencies
+      run: |
+        cd app/
+        npm install
 
     - name: Install and Test
       run: |
-        apt-get update && apt-get -y install npm
+        cd ..
+        # apt-get update && apt-get -y install npm
         npm install -g @angular/cli
         ng test
 
