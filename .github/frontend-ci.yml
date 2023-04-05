@@ -1,0 +1,29 @@
+name: Test and Build frontend app
+
+defaults:
+  run:
+    working-directory: "frontend/"
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+    - frontend
+    # paths:
+    # - 'frontend/**'
+
+jobs:
+  TestAndBuild:
+    name: Test and Build
+    runs-on: self-hosted
+
+    steps:
+    - name: Install and Test
+      run: 
+        apt-get update && apt-get -y install npm
+        npm install -g @angular/cli
+        ng test
+
+    - name: Build image
+      run: 
+        docker build -t frontend-app:1.0 .
