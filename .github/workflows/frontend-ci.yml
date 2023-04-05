@@ -20,7 +20,6 @@ jobs:
     steps:
     - name: Install and Test
       run: 
-        sudo git pull
         sudo apt-get update && apt-get -y install npm
         sudo npm install -g @angular/cli
         sudo ng test
