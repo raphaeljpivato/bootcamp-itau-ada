@@ -9,8 +9,6 @@ on:
   push:
     branches:
     - frontend
-    # paths:
-    # - 'frontend/**'
 
 jobs:
   TestAndBuild:
@@ -20,20 +18,9 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Set up nodejs 14
-      uses: actions/setup-node@v3
-      with:
-        node-version: '14'
-
-    - name: Getting dependencies
-      run: |
-        cd app/
-        npm install
-
     - name: Install and Test
       run: |
-        # cd ..
-        # apt-get update && apt-get -y install npm
+        apt-get update && apt-get -y install npm
         npm install -g @angular/cli
         ng test
 
@@ -42,7 +29,7 @@ jobs:
       with:
         registry: raphaeljpivato.io
         username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
+        password: ${{ secrets.MY_TOKEN }}
     
     - name: Build and push image
       run: |
