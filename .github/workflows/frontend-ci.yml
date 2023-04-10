@@ -22,7 +22,6 @@ jobs:
 
     - name: Install and Test
       run: |
-        xhost local:root
         export NODE_OPTIONS=--openssl-legacy-provider
         export DISPLAY=$DISPLAY gedit /etc/profile
         sudo apt-get update && sudo apt-get install -y xvfb
