@@ -22,7 +22,6 @@ jobs:
 
     - name: Install and Test
       run: |
-        npm install -g @angular/cli
         cd app
         npm install
         ng test
