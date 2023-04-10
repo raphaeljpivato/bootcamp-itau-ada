@@ -23,7 +23,6 @@ jobs:
     - name: Install and Test
       run: |
         export NODE_OPTIONS=--openssl-legacy-provider
-        export DISPLAY=$DISPLAY gedit /etc/profile
         sudo apt-get update && sudo apt-get install -y xvfb
         sudo apt-get -y install xorg xvfb gtk2-engines-pixbuf
         sudo apt-get -y install dbus-x11 xfonts-base xfonts-100dpi xfonts-75dpi xfonts-cyrillic xfonts-scalable
