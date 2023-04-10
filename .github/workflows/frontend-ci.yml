@@ -23,10 +23,10 @@ jobs:
     - name: Install and Test
       run: |
         export NODE_OPTIONS=--openssl-legacy-provider
-        export DISPLAY=:0
+        export DISPLAY=$HOST_IP:10.0 && /usr/bin/google-chrome
         npm install -g @angular/cli
         export NODE_OPTIONS=--openssl-legacy-provider
-        export DISPLAY=:0
+        export DISPLAY=$HOST_IP:10.0 && /usr/bin/google-chrome
         cd app
         npm install
         ng test
