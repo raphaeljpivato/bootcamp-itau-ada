@@ -22,11 +22,16 @@ jobs:
 
     - name: Install and Test
       run: |
+        xhost local:root
         export NODE_OPTIONS=--openssl-legacy-provider
-        export DISPLAY=$HOST_IP:10.0 && /usr/bin/google-chrome
+        export DISPLAY=$DISPLAY gedit /etc/profile
+        sudo apt-get update && sudo apt-get install -y xvfb
+        sudo apt-get -y install xorg xvfb gtk2-engines-pixbuf
+        sudo apt-get -y install dbus-x11 xfonts-base xfonts-100dpi xfonts-75dpi xfonts-cyrillic xfonts-scalable
+        sudo apt-get -y install imagemagick x11-apps
+        Xvfb -ac :99 -screen 0 1280x1024x16 &
+        export DISPLAY=:99
         npm install -g @angular/cli
-        export NODE_OPTIONS=--openssl-legacy-provider
-        export DISPLAY=$HOST_IP:10.0 && /usr/bin/google-chrome
         cd app
         npm install
         ng test
